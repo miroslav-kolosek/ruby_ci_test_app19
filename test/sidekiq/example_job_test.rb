@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class ExampleJobTest < Minitest::Test
   def test_example
