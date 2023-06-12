@@ -1,18 +1,18 @@
 FactoryBot.define do
   factory :article do
-    sequence(:title) { |n| "Article Title #{n}"}
-    sequence(:body) { |n| "Article body #{n}"}
+    sequence(:title) { |n| "Article Title #{n}" }
+    sequence(:body) { |n| "Article body #{n}" }
 
     trait(:public) do
-      status { 'public' }
+      status { "public" }
     end
 
     trait(:archived) do
-      status { 'archived' }
+      status { "archived" }
     end
 
     trait(:private) do
-      status { 'private' }
+      status { "private" }
     end
   end
 end
