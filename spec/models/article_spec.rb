@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Article, type: :model do
   describe "Attributes" do
@@ -13,8 +13,8 @@ RSpec.describe Article, type: :model do
 
   describe "Methods" do
     describe "#public_count" do
-      let!(:article_1) { Article.create!(title: 'Article 1', body: 'article 1111111', status: 'public') }
-      let!(:article_2) { Article.create!(title: 'Article 2', body: 'article 22222222', status: 'private') }
+      let!(:article_1) { Article.create!(title: "Article 1", body: "article 1111111", status: "public") }
+      let!(:article_2) { Article.create!(title: "Article 2", body: "article 22222222", status: "private") }
 
       it do
         expect(Article.public_count).to eq 1
