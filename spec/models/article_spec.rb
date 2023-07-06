@@ -22,12 +22,34 @@ RSpec.describe Article, type: :model do
     end
 
     describe "#search" do
-      let!(:article_1) { Article.create!(title: "Article 1", body: "article 1111111", status: "public") }
-      let!(:article_2) { Article.create!(title: "Article 2", body: "article 22222222", status: "private") }
-      let!(:article_3) { Article.create!(title: "Ruby On Rails", body: "article 33333333333333", status: "private") }
+      context "when article count is 1" do
+        let!(:article_1) { Article.create!(title: "Article 1", body: "article 1111111", status: "public") }
+        let!(:article_2) { Article.create!(title: "Article 2", body: "article 22222222", status: "private") }
+        let!(:article_3) { Article.create!(title: "Ruby On Rails", body: "article 33333333333333", status: "private") }
 
-      it do
-        expect(Article.search('Rails').count).to eq 1
+        it do
+          expect(Article.search('Rails').count).to eq 1
+        end
+      end
+
+      context "when article count is 2" do
+        let!(:article_1) { Article.create!(title: "Article 1", body: "article 1111111", status: "public") }
+        let!(:article_2) { Article.create!(title: "Ruby On Rails 1", body: "article 22222222", status: "private") }
+        let!(:article_3) { Article.create!(title: "Ruby On Rails 2", body: "article 33333333333333", status: "private") }
+
+        it do
+          expect(Article.search('Rails').count).to eq 2
+        end
+      end
+
+      context "when article count is 3" do
+        let!(:article_1) { Article.create!(title: "Ruby On Rails 1", body: "article 1111111", status: "public") }
+        let!(:article_2) { Article.create!(title: "Ruby On Rails 2", body: "article 22222222", status: "private") }
+        let!(:article_3) { Article.create!(title: "Ruby On Rails 3", body: "article 33333333333333", status: "private") }
+
+        it do
+          expect(Article.search('Rails').count).to eq 3
+        end
       end
     end
   end
