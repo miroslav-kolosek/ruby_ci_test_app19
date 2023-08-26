@@ -62,6 +62,18 @@ RSpec.describe Article, type: :model do
           expect(Article.search('Rails').count).to eq 4
         end
       end
+
+      context "when article count is 5" do
+        let!(:article_1) { Article.create!(title: "Ruby On Rails 1", body: "article 1111111", status: "public") }
+        let!(:article_2) { Article.create!(title: "Ruby On Rails 2", body: "article 22222222", status: "private") }
+        let!(:article_3) { Article.create!(title: "Ruby On Rails 3", body: "article 33333333333333", status: "private") }
+        let!(:article_4) { Article.create!(title: "Ruby On Rails 4", body: "article 44444444444444", status: "public") }
+        let!(:article_5) { Article.create!(title: "Ruby On Rails 5", body: "article 555555555555555", status: "public") }
+
+        it do
+          expect(Article.search('Rails').count).to eq 5
+        end
+      end
     end
   end
 end
